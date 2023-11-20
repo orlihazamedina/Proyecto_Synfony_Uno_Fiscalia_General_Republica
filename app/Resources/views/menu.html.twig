@@ -1,0 +1,194 @@
+{%if tipo is not defined%} 
+                                {% set tipo = 'trami' %}
+                                {%endif%}
+<div id="pinpo">
+
+    <div class="col-md-offset-10" id="login">
+					<li id="nav-dropdown" class=" nav-dropdown dropdown">
+            			<a class="dropdown-toggle" href="#nav-dropdown" data-toggle="dropdown" data-original-tittle="" title="">
+            				Bienvenido {{app.user.nombre}}   <i class="glyphicon glyphicon-user icon-lg">
+            					
+            				</i>	
+            				<span class="caret"></span> 
+            				<span class="total-badge badge hidden">0</span>
+            				<ul class="dropdown-menu" role="menu">
+    							{%if app.user.role=="ROLE_ADMIN"%}
+    							<li><a href="{{ path('uno_main_login_user') }}">Insertar Usuario</a></li>
+   							<li><a href="{{ path('uno_main_usuarios') }}">Mostrar Usuarios</a></li>
+                                                        <li role="separator" class="divider"></li>{%endif%}
+    							<li><a href="{{ path('uno_main_logout') }}">Salir</a></li>
+  							</ul>
+
+            			</a>
+            		</li>
+            		</div>
+                                                        <div class="container-fluid"id="im">
+        
+     <center> <img src="{{ asset('public/images/banner.png') }}" height="130"   ></center>
+                
+            </div> </div>
+      <div class="container-fluid ">
+          <ul class="nav nav-tabs" >
+                
+                <li role="presentation" class="{%if active is defined %}{{active}}{% endif%}" >
+                    <a href="{{ path('uno_main_orli',{ index: 1 }) }}">Tramitación {%if conteo is defined %}<span class="badge">
+                            
+                            
+                            {%if k is defined and k>0 and app.user.role=="ROLE_USER"%}
+                                {{k}}
+                                
+                                
+                            {%else%}
+                            {{conteo}}{%endif%}</span>{% endif%}</a></li>
+                
+                <li role="presentation" class="{%if actived is defined %}{{actived}}{% endif%}">
+                    <a href="{{ path('uno_main_despa', { index: 1 }) }}">Despacho {%if conte is defined %}<span class="badge">{%if ky is defined and ky>0 and app.user.role=="ROLE_USER"%}
+                                {{ky}}
+                                
+                                
+                            {%else%}
+                            {{conte}}{%endif%}</span>{% endif%}</a></li>
+                                
+                                {%if (ky is defined and ky==0 ) or (k is defined and k==0 )   or  app.user.role=="ROLE_ADMIN"%}
+                                    
+                                 
+                <li role="presentation" class="">
+                    {%if app.user.role=="ROLE_ADMIN"%}
+                    <a href="{{ path('uno_main_guardar') }}">Insertar Exp.</a></li>           {%endif%}
+                {%if app.user.role=="ROLE_USER"%}
+                <li role="presentation" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+                        Insertar<span class="caret"></span> </a> <ul class="dropdown-menu" > <li><a href="{{ path('uno_main_guardar') }}">Expediente</a></li>   <li role="separator" class="divider"></li>
+                            <li><a href="{{ path('uno_main_des') }}">Despacho</a></li> <li><a href="{{ path('uno_main_trami') }}">Tramitación</a></li> 
+                       
+                      <li><a href="{{ path('uno_main_fuerza') }}">Fuerza</a></li>           
+                </li> </ul>      
+                             
+                            <li role="presentation" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+                        Ver<span class="caret"></span> </a> <ul class="dropdown-menu"> <li><a href="{{ path('uno_main_vfuerza') }}">Fuerza</a></li> 
+                            <li><a href="{{ path('uno_main_vtrami') }}">Tramitación</a></li> <li><a href="{{ path('uno_main_vdes') }}">Despacho</a></li> 
+                      
+                            </li> </ul>  
+                            
+                            {%else%}
+                      <li role="presentation" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+                       Fuerza<span class="caret"></span> </a> <ul class="dropdown-menu">
+    <li><a href="{{ path('uno_main_fuerzaadmin', { municipio: 'lisa' }) }}">Lisa</a></li>
+     <li><a href="{{ path('uno_main_fuerzaadmin', { municipio:'marianao'}) }}">Marianao</a></li>
+     <li><a href="{{ path('uno_main_fuerzaadmin', { municipio:'regla' }) }}">Regla</a></li>
+     <li><a href="{{ path('uno_main_fuerzaadmin', { municipio: 'cerro'}) }}">Cerro</a></li>
+       <li><a href="{{ path('uno_main_fuerzaadmin', { municipio: 'plaza' }) }}">Plaza</a></li>
+         <li><a href="{{ path('uno_main_fuerzaadmin', { municipio: 'playa' }) }}">Playa</a></li>
+           <li><a href="{{ path('uno_main_fuerzaadmin', {municipio: 'divico' }) }}">Divico</a></li>
+             <li><a href="{{ path('uno_main_fuerzaadmin', {municipio: 'cotorro' }) }}">Cotorro</a></li>
+              <li><a href="{{ path('uno_main_fuerzaadmin', { municipio:'10Octubre' }) }}">10 de Octubre</a></li>
+                <li><a href="{{ path('uno_main_fuerzaadmin', { municipio:'arroyo' }) }}">Arroyo Naranjo</a></li>
+                <li><a href="{{ path('uno_main_fuerzaadmin', { municipio:'centrohabana' }) }}">Centro Habana</a></li>
+                 <li><a href="{{ path('uno_main_fuerzaadmin', {municipio: 'hvieja' }) }}">Habana Vieja</a></li>
+                  <li><a href="{{ path('uno_main_fuerzaadmin', { municipio: 'boyeros' }) }}">Boyeros</a></li>
+                  <li><a href="{{ path('uno_main_fuerzaadmin', { municipio: 'h.este' }) }}">Habana Este</a></li>
+                   <li><a href="{{ path('uno_main_fuerzaadmin', { municipio: 'guanabacoa' }) }}">Guanabacoa</a></li>
+                       <li><a href="{{ path('uno_main_fuerzaadmin', { municipio: 'sanmiguel' }) }}">San Miguel</a></li>
+  </ul></li>
+    <li role="presentation" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+                       Despacho-60<span class="caret"></span> </a> <ul class="dropdown-menu">
+    <li><a href="{{ path('uno_main_despaadmin', { municipio: 'lisa' }) }}">Lisa</a></li>
+     <li><a href="{{path('uno_main_despaadmin', { municipio: 'marianao' }) }}">Marianao</a></li>
+     <li><a href="{{ path('uno_main_despaadmin', { municipio:'regla' }) }}">Regla</a></li>
+     <li><a href="{{ path('uno_main_despaadmin', { municipio:'cerro' }) }}">Cerro</a></li>
+       <li><a href="{{path('uno_main_despaadmin', { municipio: 'plaza' }) }}">Plaza</a></li>
+         <li><a href="{{ path('uno_main_despaadmin', { municipio:'playa' }) }}">Playa</a></li>
+           <li><a href="{{path('uno_main_despaadmin', { municipio: 'divico' }) }}">Divico</a></li>
+             <li><a href="{{ path('uno_main_despaadmin', { municipio: 'cotorro' }) }}">Cotorro</a></li>
+              <li><a href="{{path('uno_main_despaadmin', { municipio:'10Octubre' }) }}">10 de Octubre</a></li>
+                <li><a href="{{ path('uno_main_despaadmin', { municipio: 'arroyo' }) }}">Arroyo Naranjo</a></li>
+                <li><a href="{{path('uno_main_despaadmin', { municipio: 'centrohabana'}) }}">Centro Habana</a></li>
+                 <li><a href="{{ path('uno_main_despaadmin', { municipio:'hvieja' }) }}">Habana Vieja</a></li>
+                  <li><a href="{{ path('uno_main_despaadmin', { municipio:'boyeros' }) }}">Boyeros</a></li>
+                  <li><a href="{{ path('uno_main_despaadmin', { municipio: 'h.este' }) }}">Habana Este</a></li>
+                   <li><a href="{{ path('uno_main_despaadmin', { municipio:'guanabacoa' }) }}">Guanabacoa</a></li>
+                       <li><a href="{{ path('uno_main_despaadmin', { municipio: 'sanmiguel'}) }}">San Miguel</a></li>
+  </ul></li>
+           <li role="presentation" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+                       Tramitación-60<span class="caret"></span> </a> <ul class="dropdown-menu">
+    <li><a href="{{ path('uno_main_tramiadmin', { municipio: 'lisa' }) }}">Lisa</a></li>
+     <li><a href="{{path('uno_main_tramiadmin', { municipio:  'marianao' }) }}">Marianao</a></li>
+     <li><a href="{{ path('uno_main_tramiadmin', { municipio:  'regla' }) }}">Regla</a></li>
+     <li><a href="{{ path('uno_main_tramiadmin', { municipio:  'cerro'}) }}">Cerro</a></li>
+       <li><a href="{{ path('uno_main_tramiadmin', { municipio:  'plaza' }) }}">Plaza</a></li>
+         <li><a href="{{ path('uno_main_tramiadmin', { municipio:  'playa' }) }}">Playa</a></li>
+           <li><a href="{{ path('uno_main_tramiadmin', { municipio:  'divico' }) }}">Divico</a></li>
+             <li><a href="{{ path('uno_main_tramiadmin', { municipio:  'cotorro' }) }}">Cotorro</a></li>
+              <li><a href="{{ path('uno_main_tramiadmin', { municipio:'arroyo'}) }}">Arroyo Naranjo</a></li>
+                <li><a href="{{ path('uno_main_tramiadmin', { municipio:  'centrohabana' }) }}">Centro Habana</a></li>
+                 <li><a href="{{ path('uno_main_tramiadmin', { municipio:  'hvieja' }) }}">Habana Vieja</a></li>
+                  <li><a href="{{ path('uno_main_tramiadmin', { municipio: 'boyeros' }) }}">Boyeros</a></li>
+                  <li><a href="{{ path('uno_main_tramiadmin', { municipio: 'h.este' }) }}">Habana Este</a></li>
+                   <li><a href="{{ path('uno_main_tramiadmin', { municipio:  'guanabacoa' }) }}">Guanabacoa</a></li>
+       <li><a href="{{path('uno_main_tramiadmin', { municipio:'10Octubre' }) }}">10 de Octubre</a></li>           
+                        <li><a href="{{ path('uno_main_tramiadmin', { municipio: 'sanmiguel' }) }}">San Miguel</a></li>            
+                                
+                        </ul></li>          
+                                {%endif%}
+                                
+                                
+                            <li role="presentation" class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> 
+                        Generar<span class="caret"></span> </a> <ul class="dropdown-menu"> <li><a href="{{ path('uno_main_hojauno') }}">(Hoja 1)</a></li> 
+                            <li><a href="{{ path('uno_main_excel') }}">(Hoja 2)</a> </li>  {% if app.user.role=='ROLE_ADMIN' %}
+              <li><a href="{{ path('uno_main_tramicon') }}">Consolidado(Tramitación y Despacho)</a></li> 
+                <li><a href="{{ path('uno_main_concluidos') }}">Concluidos</a></li> 
+              
+               <li><a href="{{ path('uno_main_estadistica') }}">Estadísticas</a></li> 
+            {% endif %}
+                           
+               </ul>  </li>   
+                
+                 {%endif%}           
+             
+            	</div> 
+            <div class="visible-lg" id="busqui">
+  <form action="{{ path('uno_main_find') }}" method="post">
+  
+    <div class="input-group">
+        <input type="text" class="form-control" name="expe" placeholder="Buscar Expediente" required>
+      <span class="input-group-btn">
+          <button class="btn btn-primary" type="submit"><span class="glyphicon glyphicon-search"></span></button>
+          {% if app.user.role=="ROLE_ADMIN"%}
+           <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="caret"></span>
+    <span class="sr-only">Toggle Dropdown</span>
+  </button>
+           
+  <ul class="dropdown-menu">
+    <li><a href="{{ path('uno_main_filtro', { muni: 'lisa',donde: tipo }) }}">Lisa</a></li>
+     <li><a href="{{ path('uno_main_filtro', { muni: 'marianao',donde: tipo }) }}">Marianao</a></li>
+     <li><a href="{{ path('uno_main_filtro', { muni: 'regla',donde: tipo }) }}">Regla</a></li>
+     <li><a href="{{ path('uno_main_filtro', { muni: 'cerro',donde: tipo }) }}">Cerro</a></li>
+       <li><a href="{{ path('uno_main_filtro', { muni: 'plaza',donde: tipo }) }}">Plaza</a></li>
+         <li><a href="{{ path('uno_main_filtro', { muni: 'playa',donde: tipo }) }}">Playa</a></li>
+           <li><a href="{{ path('uno_main_filtro', { muni: 'divico',donde: tipo }) }}">Divico</a></li>
+             <li><a href="{{ path('uno_main_filtro', { muni: 'cotorro',donde: tipo }) }}">Cotorro</a></li>
+              <li><a href="{{ path('uno_main_filtro', { muni: '10Octubre',donde: tipo }) }}">10 de Octubre</a></li>
+                <li><a href="{{ path('uno_main_filtro', { muni: 'arroyo',donde: tipo }) }}">Arroyo Naranjo</a></li>
+                <li><a href="{{ path('uno_main_filtro', { muni: 'centrohabana',donde: tipo }) }}">Centro Habana</a></li>
+                 <li><a href="{{ path('uno_main_filtro', { muni: 'hvieja',donde: tipo }) }}">Habana Vieja</a></li>
+                  <li><a href="{{ path('uno_main_filtro', { muni: 'boyeros',donde: tipo }) }}">Boyeros</a></li>
+                  <li><a href="{{ path('uno_main_filtro', { muni: 'h.este',donde: tipo }) }}">Habana Este</a></li>
+                   <li><a href="{{ path('uno_main_filtro', { muni: 'guanabacoa',donde: tipo }) }}">Guanabacoa</a></li>
+                    <li><a href="{{ path('uno_main_filtro', { muni: 'sanmiguel',donde: tipo }) }}">San Miguel</a></li>
+  
+  
+      </span>{%endif%}
+    </div><!-- /input-group -->
+  <!-- /.col-lg-6 -->
+</form></div>  
+      
+          
+                    
+             <br>    
+        

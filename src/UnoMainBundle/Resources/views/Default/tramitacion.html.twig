@@ -1,0 +1,48 @@
+{% extends 'layout.html.twig' %}
+{%if orli is not defined%} 
+                                {% set orli = ' ' %}
+                                {%endif%}
+{% block body %}
+    
+    {{ parent() }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h2>Tramitación</h2>
+                                  
+				</div>
+                            </div>
+                              
+      {{ form_start(form) }}
+    
+                <div class="col-md-5">
+                   
+               
+                   
+                
+              
+               <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL CONTROLADOS</div>
+                    {{ form_widget(form.TotalContdia, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.TotalContdia) }}</span>
+                </div>    
+                    </div> <div class="col-md-10">
+                 <p>
+		        {{ form_widget(form.Guardar, {'label' : 'Guardar', 'attr': {'class': 'btn btn-success  col-lg-offset-10'}}) }}
+		    </p> </div>
+       
+      {{ form_end(form) }}
+      
+	</div>
+		</div>
+       {% if app.user.role == 'ROLE_USER' %}
+            <div class="form-group" id="muni" style="display: none">
+                {% else %}
+		<div class="form-group" id="muni" style="display: block">
+                    {% endif %}
+                    <div class="form-label"style="color: black"><h4>Municipio {{orli}}</h4></div>
+			       
+			     
+			    </div>
+	{% endblock %}

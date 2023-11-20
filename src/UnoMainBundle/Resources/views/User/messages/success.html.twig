@@ -1,0 +1,20 @@
+{% if flashMessage is not defined %}
+	<div class="alert alert-success hidden" id="message" role="alert">
+		<div class="container">
+			<span id="user-message"></span>
+		</div>
+	</div>
+{% endif %}
+
+{% for flashMessage in app.session.flashbag.get('mensaje') %}
+    {% if flashMessage =="El expediente ha sido modificado satisfactoriamente" or flashMessage =='El Expediente ha sido creado satisfactoriamente'
+or flashMessage =='El formulario Tramitacion se ha insertado correctamente'or flashMessage =='La Fuerza laboral ha sido modificada correctamente'or flashMessage =='El formulario Despacho ha sido modificado correctamente'or flashMessage =='Se inserto el formulario Despacho correctamente'or flashMessage =='El formulario Tramitacion se ha insertado correctamente'or flashMessage =='La Fuerza laboral ha sido modificada correctamente'or flashMessage =='El formulario Despacho ha sido modificado correctamente'or flashMessage =='El formulario Fuerza ha sido correctamente insertado' or flashMessage =='La Tramitacion ha sido modificada correctamente' or flashMessage =='El Expediente ha sido eliminado del sistema' or flashMessage =='El Usuario ha sido creado satisfactoriamente'%}
+<div class="alert alert-success" role="alert" >
+             
+             {% elseif true   %}
+            <div class="alert  alert-danger" role="alert" >
+                   
+ {% endif %}
+            <div class="container"><center> {{ flashMessage }}</center> </div>
+	</div>
+{% endfor %}

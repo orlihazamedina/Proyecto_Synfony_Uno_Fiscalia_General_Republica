@@ -1,0 +1,278 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block stylesheets %}
+    {{ parent() }}
+   
+<link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}">
+ <link rel="stylesheet" href="{{ asset('public/css/bootstrap-select.css') }}"> 
+  <link rel="stylesheet" href="{{ asset('public/css/bootstrap-select.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('public/css/pikaday-package.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('public/css/miestilo.css') }}"> 
+{% endblock %}
+
+
+
+{% block body %}
+    
+    {{ parent() }}
+	<div class="main container">
+		<div class="row well">
+			<div >
+				<div class="page-header">
+                                    
+					<h2>Expediente</h2>
+              
+                         <span class="text-danger" id="error"><i class="fa fa-times-circle"></i> {{ error[9] }}</span>
+
+				</div>
+                        </div>
+                    
+      {{ form_start(form) }}
+      <div class="col-md-3">
+             <div class="form-group ">
+          <label>Estado del Proceso</label>
+          {{ form_widget(form.tipoExpediente, {'attr': {'class': 'selectpicker'}}) }}
+          
+			       <div> <span class="text-danger">{{error[2]}}</span></div>
+			    </div>
+                             <div class="form-group ">
+                                 <label>Número de Expediente</label>
+                    {{ form_widget(form.numExpediente, { 'attr' : {'class' : 'form-control', 'placeholder' : 'Numero de expediente'} }) }}
+                   <span class="text-danger">{{ form_errors(form.numExpediente) }}</span>
+                <span class="text-danger">{{ error[10] }}</span>
+                   
+                </div>
+                     <div class="form-group  ">
+                         
+                          <label>Unidad</label>
+			        {{ form_widget(form.unidad, {'attr': {'class': 'selectpicker'}}) }}
+			      <div>  <span class="text-danger">{{ error[8] }}</span></div>
+			</div>
+                        <div class="form-group">
+			       <label>Delito</label>
+			        {{ form_widget(form.delito, {'attr': {'class': 'selectpicker'}}) }}
+			      <div>  <span class="text-danger">{{ error[6] }}</span></div>
+			    </div>
+                       
+                      
+                     
+                   
+                            </div>                 
+
+              
+                
+                <div class="col-md-3">
+                    <div class="col-md-offset-2">
+                         	
+                	
+                        
+    
+       
+
+                     
+                             <div class="form-group  ">
+         <label>Fecha de Inicio</label>
+                     {{ form_widget(form.fechainicial,  { 'attr' : {'name':'date','class' : 'test class'} }) }} <span class="glyphicon glyphicon-calendar"></span> 
+			     <div>   <span class="text-danger">{{ error[3] }}</span></div>
+			  
+                      </div>
+                             
+                    
+                            <div class="form-group " id="io" style="display:block">
+          <label>Fecha de Elevado</label>
+                    {{ form_widget(form.fechaentrega, { 'attr' : {'name':'date','class' : 'test class'} }) }} <span class="glyphicon glyphicon-calendar"></span> 
+                    <div><span class="text-danger">{{ error[4] }}</span></div>
+                </div>  
+ <div class="form-group">
+          <label>Fecha de Pronóstico</label>
+                    {{ form_widget(form.pronostico, { 'attr' : {'name':'date','class' : 'test class'} }) }} <span class="glyphicon glyphicon-calendar"></span> 
+                   <div> <span class="text-danger">{{ error[5] }}</span></div>
+                          <div> <span class="text-danger">{{ error[11] }}</span></div>
+                </div>
+                    
+             
+                
+                
+                </div>
+                </div>
+     
+                    
+                <div class="col-md-3">   
+                    <div>
+                     <div class="form-group">
+         <div><label>Dev. Fiscal </label></div>
+                    {{ form_widget(form.dEVFISCAL, { 'attr' : {'name':'date','class' : 'test class'} }) }} <span class="glyphicon glyphicon-calendar"></span> 
+                    
+                   <div> <span class="text-danger">{{   error[1] }}</span></div>
+                </div>  
+              
+               
+                  <div class="form-group">
+        <div> <label>SIS</label></div>
+               {{ form_widget(form.sIS, { 'attr' : {'name':'date','class' : 'test class'} }) }} <span class="glyphicon glyphicon-calendar"></span>  
+           
+                
+                    <div><span class="text-danger">{{    error[1] }}</span></div>
+                </div>
+                
+                 <div class="form-group">
+         <label>Dev. Tribunal Provincial</label>
+                    {{ form_widget(form.dEVTTP,{ 'attr' : {'name':'date','class' : 'test class'} })}} <span class="glyphicon glyphicon-calendar"></span> 
+                    <div><span class="text-danger">{{    error[1] }}</span></div>
+                   
+                </div>  
+                
+                
+                 
+                    </div></div>
+                    <div class="col-md-3">
+                        
+                         {% if app.user.role == 'ROLE_USER' %}
+            <div class="form-group"  style="display: none">
+                {% else %}
+		<div class="form-group"  style="display: block">
+                    {% endif %}
+                   <label>Municipio</label>
+			        {{ form_widget(form.municipio, {'attr': {'class': 'selectpicker'}}) }}
+			       <div> <span class="text-danger">{{ error[7] }}</span></div>
+			    </div>
+           
+			 <div class="form-group"style="color: black">
+			       <label>Acusados en Prision Prov.</label>
+			        {{ form_widget(form.acusados, {'attr': {'class': 'form-control'}}) }}
+			        <span class="text-danger">{{ form_errors(form.acusados) }}</span>
+			    </div>		
+                         <div class="form-group"style="color: black">
+			       <label>Acusados</label>
+			        {{ form_widget(form.acusadosp, {'attr': {'class': 'form-control'}}) }}
+			        <span class="text-danger">{{ form_errors(form.acusadosp) }}</span>
+			    </div>
+                            
+                            
+                            {%if tipo is  defined and tipo=='Despacho'%}
+                            <div class="form-group"style="color: black">
+			     
+			        
+                               <input type="checkbox" id="tramitacion">      <label>Devuelto a la Instruccion</label>
+			    </div>
+                            
+                             {%elseif tipo is  defined and tipo=='Tramitacion'%}
+                            <div class="form-group"style="color: black">
+			     
+			        
+                                <input type="checkbox" id="tramitacion" >      <label>Recibido concluido</label>
+			    </div>
+                            {%endif%}
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                        </div>
+                    
+               
+
+  
+
+  
+
+                   <div class="form-group col-md-8 "   >
+                       <div id="polk">
+                      <label>Observaciones</label>
+                    {{ form_widget(form.observaciones, { 'attr' : {'class' : 'form-control','placeholder' : 'Observaciones'} }) }}
+                    <span class="text-danger">{{ form_errors(form.observaciones) }}</span>
+             </div>   </div>  
+                    
+                
+                <div class="col-md-2 col-md-offset-10">
+                 <p>
+		        {{ form_widget(form.Guardar, {'label' : 'Guardar', 'attr': {'class': 'btn btn-success'}}) }}
+                 </p> </div>
+                    
+      
+    {{ form_end(form) }}
+		</div>
+     </div></div>
+     
+	{% endblock %}
+        {% block javascripts  %}
+	{{ parent() }}
+	
+        <script src="{{ asset('public/js/main.js') }}"></script>
+<script src="{{ asset('public/js/bootstrap-datepicker.js') }}"></script>
+
+<script src="{{ asset('public/js/bootstrap-select.js') }}"></script>
+<script src="{{ asset('public/js/pikaday-responsive-modernizr.js') }}"></script>
+<script src="{{ asset('public/js/moment.min.js') }}"></script>
+<script src="{{ asset('public/js/pikaday.min.js') }}"></script>
+<script src="{{ asset('public/js/pikaday-responsive.js') }}"></script>
+<script src="{{ asset('public/js/jquery.min.js') }}"></script>
+
+
+
+
+
+
+<script>
+
+var $date1 = $("#unomainbundle_expediente_fechainicial");
+  var instance1 = pikadayResponsive($date1);
+  $date1.on("change", function() {
+    $("#output1").html($(this).val());
+  });
+var $date1 = $("#unomainbundle_expediente_fechaentrega");
+  var instance1 = pikadayResponsive($date1);
+  $date1.on("change", function() {
+    $("#output1").html($(this).val());
+  });
+  var $date1 = $("#unomainbundle_expediente_dEVTTP");
+  var instance1 = pikadayResponsive($date1);
+  $date1.on("change", function() {
+    $("#output1").html($(this).val());
+  });
+  var $date1 = $("#unomainbundle_expediente_sIS");
+  var instance1 = pikadayResponsive($date1);
+  $date1.on("change", function() {
+    $("#output1").html($(this).val());
+  });
+  var $date1 = $("#unomainbundle_expediente_dEVFISCAL");
+  var instance1 = pikadayResponsive($date1);
+  $date1.on("change", function() {
+    $("#output1").html($(this).val());
+  });
+ var $date1 = $("#unomainbundle_expediente_pronostico");
+  var instance1 = pikadayResponsive($date1);
+  $date1.on("change", function() {
+    $("#output1").html($(this).val());
+  });
+  
+  $("#clear").click(function() {
+    instance3.setDate(null);
+  });
+
+  $("#today").click(function() {
+    instance3.setDate(moment());
+  });
+
+function mostrarReferencia(){
+//Si la opcion con id Conocido_1 (dentro del documento > formulario con name fcontacto >     y a la vez dentro del array de Conocido) esta activada
+if (document.getElementById('Conocido_1').checked ==true) {
+//muestra (cambiando la propiedad display del estilo) el div con id 'desdeotro'
+document.getElementById('io').style.display='block';
+//por el contrario, si no esta seleccionada
+} else {
+//oculta el div con id 'desdeotro'
+document.getElementById('io').style.display='none';
+}
+}
+
+
+
+</script>
+
+{% endblock %}

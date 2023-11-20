@@ -1,0 +1,48 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    
+    {{ parent() }}
+    {{ include('UnoMainBundle:User:messages/success.html.twig') }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h2>Tramitacion</h2>
+                                        
+				</div>
+                            </div>
+                              
+   
+                <div class="col-md-5">
+                  
+                   
+                 <div class="form-group">
+          <div class="form-label"style="color: midnightblue">TOTAL EXPEDIENTES CONTROLADOS</div>
+                    {{ form.TotalContdia }}
+                   
+                </div>  
+                    
+              
+                
+                    </div>
+       
+      
+      
+	</div>
+		</div>
+                     {% if app.user.role == 'ROLE_USER' %}
+            <div class="form-group" id="muni" style="display: none">
+                {% else %}
+		<div class="form-group" id="muni" style="display: block">
+                    {% endif %}
+                    <div class="form-label"style="color: black"><h4>Municipio {{form.municipio}}</h4></div>
+       </div>
+                    <div id="rinti">  <a href="{{ path('uno_main_tramiedit', { id: form.id }) }}" class="btn btn-sm btn-primary"><li class="glyphicon glyphicon-pencil"></li>
+			                            {{ 'Editar'|trans }}
+			                        </a>
+
+			                        <a href="{{ path('uno_main_deletetrami', { id: form.id }) }}" class="btn btn-sm btn-danger btn-delete"onclick="return confirm('¿Estás seguro?')">
+			                            {{ 'Eliminar'|trans }}
+			                        </a></div>
+	{% endblock %}

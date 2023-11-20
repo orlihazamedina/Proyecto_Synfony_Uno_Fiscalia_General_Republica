@@ -1,0 +1,182 @@
+{% extends 'layout.html.twig' %}
+
+
+
+{% block stylesheets %}
+    {{ parent() }}
+   
+<link rel="stylesheet" href="{{ asset('public/css/datepicker.css') }}">
+ <link rel="stylesheet" href="{{ asset('public/css/bootstrap-select.css') }}"> 
+  <link rel="stylesheet" href="{{ asset('public/css/bootstrap-select.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('public/css/pikaday-package.css') }}"> 
+    <link rel="stylesheet" href="{{ asset('public/css/miestilo.css') }}"> 
+{% endblock %}
+
+
+
+{% block body %}
+    
+    {{ parent() }}
+	<div class="main container">
+            <div class="row well" >
+			<div class="col-md-12">
+				<div class="page-header">
+                                    
+					<h2>Expediente</h2>
+                   
+                      
+
+				</div>
+                        </div>
+                    
+     <div>
+      <div class="col-md-4">
+             <div class="form-group ">
+                 <div class="form-label" style="color: black"><h4>Estado del Proceso</h4></div>
+         <span>{{form.tipoexpediente}}<span>
+          
+			     
+			    </div>
+                             <div class="form-group ">
+                                 <div class="form-label" style="color: #000"><h4>Número de Expediente</h4></div>
+                    <span>{{ form.numExpediente }}</span>
+              
+               
+                   
+                </div>
+                     <div class="form-group  ">
+                         
+                         <div class="form-label" style="color: #000"><h4>Unidad</h4></div>
+			        {{ form.unidad}}
+			     
+			</div>
+                        <div class="form-group">
+                            <div class="form-label" style="color: #000"><h4>Delito</h4></div>
+			        {{ form.delito }}
+			 
+			    </div>
+                                 
+                      
+                     
+                   
+                            </div>                 
+
+               
+                
+                <div class="col-md-4">
+                    <div class="col-md-offset-2">
+                     
+                             <div class="form-group  ">
+          <div class="form-label"style="color: #000"><h4>Fecha de Inicio</h4></div>
+                     <span >{{ form.fechainicial|date('d-m-Y') }} </span> 
+			    
+			  
+                      </div>
+                             
+                    {%if form.fechaentrega %}
+                            <div class="form-group " id="io" style="display:block">
+          <div class="form-label"style="color: #000"><h4>Fecha de Elevado</h4></div>
+                   <span > {{ form.fechaentrega|date('d-m-Y') }} </span> 
+                   
+                            </div>  {%endif%}
+ <div class="form-group">
+          <div class="form-label"style="color: #000"><h4>Fecha de Pronóstico</h4></div>
+                     <span >{{ form.pronostico|date('d-m-Y')}}</span> 
+                   
+                </div>
+                    
+                   {%if form.dEVFISCAL %}
+                     <div class="form-group">
+          <div class="form-label"style="color: #000"><h4>Fecha Devolución Fiscal</h4> </div>
+                     <span >{{ form.dEVFISCAL|date('d-m-Y')}}</span> 
+                    
+                 
+                     </div>  {%endif%}
+              
+                  {%if form.sIS %}
+                  <div class="form-group">
+          <div class="form-label"style="color: #000"><h4>SIS</h4></div>
+                <span >{{ form.sIS|date('d-m-Y') }}</span>  {%endif%}
+           
+                
+                  
+                </div>
+                   {%if form.dEVTTP %}
+                 <div class="form-group">
+          <div class="form-label"style="color: #000"><h4>Fecha Devolución Tribunal Provincial</h4></div>
+                    <span > {{ form.dEVTTP|date('d-m-Y')}}</span> 
+                   
+                   
+                </div>  {%endif%}
+                
+                 
+                </div>
+               
+                </div>
+      <div class="col-md-2" >
+          
+                   <div class="form-group" >
+			       <div class="form-label"style="color: #000"><h4>Municipio</h4></div>
+			        {{ form.municipio }}
+			       
+                        </div>
+                   {%if form.acusados %}
+                   <div class="form-group" >
+			       <div class="form-label"style="color: #000"><h4>Acusados PP</h4></div>
+			        {{ form.acusados }}
+                              </div>{%endif%}    
+                                 {%if form.acusadosp %}
+                   <div class="form-group" >
+			       <div class="form-label"style="color: #000"><h4>Acusados</h4></div>
+			        {{ form.acusadosp }}
+			       
+                        </div>{%endif%}        {%if form.observaciones %}  
+                     <div class="form-group">
+                <div class="form-label" style="color: #000"><h4>Observaciones</h4></div>
+                   <span> {{ form.observaciones}}</span>
+                   
+                </div>  {%endif%} 
+                       
+                       
+                       
+                   </div>
+                    
+                   </div>
+                
+                
+                   </div>
+                    </div>
+                   
+                   
+                    
+              
+ 
+  
+
+  
+
+                    
+                    
+                
+             
+                 
+      
+           
+						
+                	
+                        
+     
+       
+	</div>
+  
+		
+      <div id="rinti">  <a href="{{ path('uno_main_editguardar', { id: form.id }) }}" class="btn btn-sm btn-primary"><li class="glyphicon glyphicon-pencil"></li>
+			                            {{ 'Editar'|trans }}
+			                        </a>
+
+			                        <a href="{{ path('uno_main_delete', { id: form.id }) }}" class="btn btn-sm btn-danger btn-delete"onclick="return confirm('¿Estás seguro?')"><li class="glyphicon glyphicon-trash "></li>
+			                            {{ 'Eliminar'|trans }}
+			                        </a></div>
+     
+	{% endblock %}
+       

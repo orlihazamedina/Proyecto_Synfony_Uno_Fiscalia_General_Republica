@@ -1,0 +1,68 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+	{{ parent() }}
+       
+        <section>
+            <div id="mensajito">
+        {{ include('UnoMainBundle:User:messages/success.html.twig') }}</div>
+        <div class="row"><div class="col-md-5 col-lg-offset-2" id="menu"> <h4>EXPEDIENTES EN TRAMITACIÓN</h4> </div><div class=" visible-lg col-md-3"><ul  class="pager" >
+         <li role="active"><a href="{{ path('uno_main_homeall') }}">Mostrar todo </a></li>
+  </ul></div></div>
+	<div class="container col-md-12" id="despa">
+            
+            <div class="panel-heading" > <table class="table table-striped table-hover table-condensed"> 
+                
+                <tr class="info"> 
+                    <th><center>#</center></th>{% if app.user.role == 'ROLE_ADMIN' %}<th><center>   <a href="{{ path('uno_main_order', { parametro: 'municipio' ,index:1 }) }}" style="color: black">Municipio <span class="glyphicon glyphicon-menu-down"></span> </a></center></th>{% endif %} <th><center style="color: black"><clas>Num. Expediente</center></th><th><center><a href="{{ path('uno_main_order', { parametro: 'unidad' ,index:1}) }}"style="color: black" >Unidad <span class="glyphicon glyphicon-menu-down"></span></a></center></th> <th><center><a href="{{ path('uno_main_order', { parametro: 'delito' ,index:1}) }}"style="color: black">Delito <span class="glyphicon glyphicon-menu-down"></span></a></center></th> <th><center><a href="{{ path('uno_main_order', { parametro: 'fechainicial',index:1 }) }}" style="color: black">Fecha de Inicio <span class="glyphicon glyphicon-menu-down"></span></a></center></th><th style="color: black"><center>Término Tramitación</center></th><th><center><a href="{{ path('uno_main_order', { parametro: 'pronostico',index:1 }) }}" style="color: black">Fecha Pronóstico <span class="glyphicon glyphicon-menu-down"></span></a></center></th><th>  </th><th>  </th><th>  </th></tr> 
+{% for producto in productos  %}  
+            
+
+<tr> <td><center>{{index*15-14+loop.index0}}</center></td>{% if app.user.role == 'ROLE_ADMIN' %}<td><center>{{producto.municipio}}</center></td>{% endif %} <td ><center>{{producto.numExpediente}}</center></td></center><td><center>{{producto.unidad}}</center></td> <td><center>{{producto.delito}}</center></td><td><center>{{producto.fechainicial|date('d-m-Y') }}</center></td>{% if termi[loop.index0]>90%}<td style="color: brown ">  {% elseif true   %}<td>{% endif %} <center>{{termi[loop.index0]}}</center></td><td><center>{{producto.pronostico|date('d-m-Y')}}</center></td> <td>
+			                        <a href="{{ path('uno_main_vexp', { id: producto.id }) }}" id="ver" class="btn btn-sm btn-info"><li class="glyphicon glyphicon-eye-open"></li>
+			                          {{ 'Ver'|trans }}
+			                        </a>
+</td><td>
+			                       <a href="{{ path('uno_main_editguardar', { id: producto.id }) }}" class="btn btn-sm btn-primary"><li class="glyphicon glyphicon-pencil"></li>
+			                            {{ 'Editar'|trans }}
+			                        </a>
+</td><td>
+    <a href="{{ path('uno_main_delete', { id: producto.id }) }}" id="eliminar" class="btn btn-sm btn-danger btn-delete"onclick="return confirm('¿Estás seguro?')"><li class="glyphicon glyphicon-trash "></li>
+			                            {{ 'Eliminar'|trans }}
+			                        </a>
+				               </td>
+				                </td>
+                </tr> {% endfor %} </table></div></div>
+        </section>
+     
+       
+        
+        
+        
+        
+        
+        
+        
+        {% if d>1 %}
+  <div class="  container">
+      <ul class="pagination">
+          {% if index >1%}
+          <li ><a href="{{ path('uno_main_orli', { index: index-1 }) }}" >&laquo</a></li>
+             {% endif %}
+        	{% for i in 1..d %}
+              {% if index == i%}
+              <li class="active"><a>{{i}}</a></li>
+               {% elseif true   %}
+                <li><a href="{{ path('uno_main_orli', { index: i }) }}" >{{i}}</a></li>
+               {% endif %}
+                {% endfor %}
+          {% if index < d%}
+<li><a href="{{ path('uno_main_orli', { index: index+1 }) }}">&raquo</a></li>
+        	 {% endif %}
+        		
+        	</ul>
+
+      {% endif %}
+    </div>
+{% endblock %}
+

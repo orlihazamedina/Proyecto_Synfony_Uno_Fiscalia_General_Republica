@@ -1,0 +1,41 @@
+{% extends 'layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('public/css/signin.css') }}">
+{% endblock %}
+
+{% block body %}
+	{{ parent() }}
+        <br><br>
+        <div  class="container ">
+            <div class=" col-md-4 col-md-offset-4" style="top: 70px">
+      <center>  <img src="{{ asset('public/images/logo_fgr_login.png') }}" width="120" height="120"   ></center>
+		<form action="{{ path('uno_main_login_check') }}" method="post" class="form-group " >
+                    <center><h4 style="color: aliceblue">RESOLUCION UNO </h4></center>
+
+            {% if error %}
+            <div class="alert-warning">
+             
+                    
+               <center> <h5 >Usuario o Contraseña invalidos</h5></center>
+                                                </div>
+            {% endif %}
+
+            <div class="form-group ">
+                 <div class="input-group">
+                <div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+		    <input type="text" id="username" class="form-control " name="_username" value="{{ last_username }}" placeholder="{{ 'Usuario'|trans }}" required autofocus />
+
+                 </div></div><div class="form-group">
+                <div class="input-group">
+                <div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
+                <input type="password" id="password" class="form-control" name="_password" placeholder=" {{ 'Contraseña'|trans }}" required /></div>
+            </div>
+		    <input type="hidden" name="_target_path" value="uno_main_homepage" />
+                   
+                           
+                    <button type="submit" id="buti" class="btn btn-success ">{{ 'Entrar'|trans }}</button>
+		</form>
+    </div></div>
+{% endblock %}

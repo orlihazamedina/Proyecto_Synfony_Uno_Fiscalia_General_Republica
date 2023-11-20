@@ -1,0 +1,101 @@
+{% extends 'layout.html.twig' %}
+{%if orli is not defined%} 
+                                {% set orli = ' ' %}
+                                {%endif%}
+{% block body %}
+    
+    {{ parent() }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h2>Fuerza</h2>
+                                       
+				</div>
+                            </div>
+                    
+      {{ form_start(form) }}
+      <div class="col-md-5">
+      <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL FISCALES ESPECIALIDAD DE PENAL</div>
+                    {{ form_widget(form.totalEspecialidad, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.totalEspecialidad) }}</span>
+                    <span class="text-danger">{{ error[0] }}</span>
+                </div>
+      <div class="form-group">
+          <div class="form-label"style="color: black">DEDICADOS AL CONTROL</div>
+                    {{ form_widget(form.dedControl, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.dedControl) }}</span>
+                </div>
+      <div class="form-group">
+          <div class="form-label"style="color: black">DEDICADOS AL DESPACHO</div>
+                    {{ form_widget(form.dedDespacho, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.dedDespacho) }}</span>
+                </div>
+      
+      <div class="form-group">
+          <div class="form-label"style="color: black">DEDICADOS A JUICIOS</div>
+                    {{ form_widget(form.dedJuicios, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.dedJuicios) }}</span>
+                </div>
+                <div class="form-group">
+          <div class="form-label"style="color: black">OTRAS ACTIVIDADES</div>
+                    {{ form_widget(form.otrasActividades, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.otrasActividades) }}</span>
+                </div>
+               
+                </div>
+           
+                <div class="col-md-5">
+                   <div class="form-group">
+                        <div class="form-group"style="color: black">
+          <div class="form-label">TOTAL DE JUICIOS REALIZADOS</div>
+                    {{ form_widget(form.totaljuicios, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.totaljuicios) }}</span>
+                     <span class="text-danger">{{ error[1] }}</span>
+                </div>
+          <div class="form-label"style="color: black">JUICIOS REALIZADOS DEL PROCESO SUMARIO </div>
+                    {{ form_widget(form.sumario, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.sumario) }}</span>
+                </div>  
+                 <div class="form-group">
+          <div class="form-label"style="color: black">REALIZADOS EN EL TRIBUNAL MUNICIPAL ORDINARIO</div>
+                    {{ form_widget(form.ordinario, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.ordinario) }}</span>
+                </div>  
+                    <div class="form-group">
+          <div class="form-label"style="color: black">REALIZADOS EN EL TRIBUNAL PROVINCIAL ORDINARIO</div>
+                    {{ form_widget(form.tribProvOrd, { 'attr' : {'class' : 'form-control' } }) }}
+                 <span class="text-danger">{{ form_errors(form.tribProvOrd) }}</span>
+                </div>  
+                        <div class="form-group">
+          <div class="form-label"style="color: black">REALIZADOS TRIBUNAL PROVINCIAL DE APELACIONES</div>
+                    {{ form_widget(form.tribProvApel, { 'attr' : {'class' : 'form-control' } }) }}
+                    <span class="text-danger">{{ form_errors(form.tribProvApel) }}</span>
+                </div>  
+                 <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE INCIDENCIAS REPORTADAS</div>
+                    {{ form_widget(form.incidenciasReport, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.incidenciasReport) }}</span>
+                </div>  
+                    
+                </div>
+                <div class="col-md-10">
+                 <p>
+		        {{ form_widget(form.Guardar, {'label' : 'Guardar', 'attr': {'class': 'btn btn-success col-lg-offset-11'}}) }}
+		    </p> 
+                    </div>
+                    </div>
+       
+      
+       {% if app.user.role == 'ROLE_USER' %}
+            <div class="form-group" id="muni" style="display: none">
+                {% else %}
+		<div class="form-group" id="muni" style="display: block">
+                    {% endif %}
+                    <div class="form-label"style="color: black"><h4>Municipio {{orli}}</h4></div>
+			       
+			     
+			    </div>
+	{{ form_end(form) }}
+	{% endblock %}

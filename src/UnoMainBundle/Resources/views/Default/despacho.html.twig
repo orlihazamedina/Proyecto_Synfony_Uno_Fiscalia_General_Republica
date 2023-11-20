@@ -1,0 +1,103 @@
+{% extends 'layout.html.twig' %}
+{%if orli is not defined%} 
+                                {% set orli = ' ' %}
+                                {%endif%}
+{% block body %}
+    
+    {{ parent() }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h2>Despacho</h2>
+                                       
+				</div>
+                            </div>
+                    
+      {{ form_start(form) }}
+      <div class="col-md-5">
+     
+      
+      <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE EXPEDIENTES DESPACHADOS EN EL DIA</div>
+                    {{ form_widget(form.despachadosDia, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.despachadosDia) }}</span>
+                </div>
+      
+     
+                <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE DEVOLUCIONES RECIBIDAS</div>
+                    {{ form_widget(form.devtrirecibidas60dias, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.devtrirecibidas60dias) }}</span>
+                </div>
+
+
+
+                <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE SIS RECIBIDAS</div>
+                    {{ form_widget(form.totalsis60dias, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.totalsis60dias) }}</span>
+                </div>
+
+
+
+                <div class="form-group">
+          <div class="form-label"style="color: black">REMITIDOS POR FACTURA AL TRIBUNAL</div>
+                    {{ form_widget(form.remitidosFactura, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.remitidosFactura) }}</span>
+                </div>
+                <div class="form-group">
+          <div class="form-label"style="color: black">EN TERMINO SUPERIOR A 10 DIAS</div>
+                    {{ form_widget(form.termmas10dias, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.termmas10dias) }}</span>
+                      <span class="text-danger">{{ r | default('') }}</span>
+                </div>
+                </div>
+                <div class="col-md-5">
+                  <span class="text-danger">{{ error | default('') }}</span>
+                 <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE CONCLUSIONES</div>
+                    {{ form_widget(form.concluciones, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.concluciones) }}</span>
+                </div>  
+                    <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE SOBRESEIMIENTOS</div>
+                    {{ form_widget(form.sobreseimientos, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.sobreseimientos) }}</span>
+                </div>  
+                        <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE INHIBITORIAS</div>
+                    {{ form_widget(form.inhibitorias, { 'attr' : {'class' : 'form-control' } }) }}
+                    <span class="text-danger">{{ form_errors(form.inhibitorias) }}</span>
+                </div>  
+                 <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE 8.3</div>
+                    {{ form_widget(form.ochotres, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.ochotres) }}</span>
+                </div>  
+                     <div class="form-group">
+          <div class="form-label"style="color: black">OTROS</div>
+                    {{ form_widget(form.otros, { 'attr' : {'class' : 'form-control'} }) }}
+                    <span class="text-danger">{{ form_errors(form.otros) }}</span>
+                </div> 
+                 
+                <p class="col-lg-offset-9">
+		        {{ form_widget(form.Guardar, {'label' : 'Guardar', 'attr': {'class': 'btn btn-success'}}) }}
+		    </p> 
+                    </div>
+          </div>
+      {{ form_end(form) }}
+      
+	</div>
+		</div>
+      
+       {% if app.user.role == 'ROLE_USER' %}
+            <div class="form-group" id="muni" style="display: none">
+                {% else %}
+		<div class="form-group" id="muni" style="display: block">
+                    {% endif %}
+                    <div class="form-label"style="color: black"><h4>Municipio {{orli}}</h4></div>
+			       
+			     
+			    </div>
+	{% endblock %}

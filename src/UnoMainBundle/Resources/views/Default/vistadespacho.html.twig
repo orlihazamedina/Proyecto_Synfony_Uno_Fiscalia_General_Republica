@@ -1,0 +1,97 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    
+    {{ parent() }}
+    {{ include('UnoMainBundle:User:messages/success.html.twig') }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h2>Despacho</h2>
+                                        
+                                      
+                            </div>  </div>
+                    
+ 
+      <div class="col-md-5">
+      
+      <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE EXPEDIENTES DESPACHADOS EN EL DIA</div>
+                    {{ form.despachadosDia }}
+          
+                </div>
+                      <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE DEVOLUCIONES RECIBIDAS</div>
+                    {{ form.devtrirecibidas60dias }}
+                
+                </div>
+
+   <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE SIS RECIBIDAS</div>
+                    {{ form.totalsis60dias}}
+                
+                </div>
+
+                <div class="form-group">
+          <div class="form-label"style="color: black">REMITIDOS POR FACTURA AL TRIBUNAL</div>
+                    {{ form.remitidosFactura }}
+                 
+                </div>
+                    
+                    <div class="form-group">
+          <div class="form-label"style="color: black">CON TERMINO MAS DE 10 DIAS</div>
+                    {{ form.termmas10dias }}
+                 
+                </div>
+                </div>
+                <div class="col-md-5">
+                  
+                 <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE CONCLUSIONES</div>
+                    {{ form.concluciones }}
+                 
+                </div>  
+                    <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE SOBRESEIMIENTOS</div>
+                    {{form.sobreseimientos }}
+                 
+                </div>  
+                        <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE INHIBITORIAS</div>
+                    {{ form.inhibitorias }}
+                 
+                </div>  
+                 <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE 8.3</div>
+                    {{ form.ochotres }}
+                   
+                </div>  
+                     <div class="form-group">
+          <div class="form-label"style="color: black">OTROS</div>
+                    {{form.otros }}
+                  
+                </div> 
+                
+                
+                    </div>
+       
+    
+      
+	</div>
+		</div>
+                     {% if app.user.role == 'ROLE_USER' %}
+            <div class="form-group" id="muni" style="display: none">
+                {% else %}
+		<div class="form-group" id="muni" style="display: block">
+                    {% endif %}
+                    <div class="form-label"style="color: black"><h4>Municipio {{form.municipio}}</h4></div>
+       </div>
+                    <div id="rinti">  <a href="{{ path('uno_main_despachoedit', { id: form.id }) }}" class="btn btn-sm btn-primary"><li class="glyphicon glyphicon-pencil"></li>
+			                            {{ 'Editar'|trans }}
+			                        </a>
+
+			                        <a href="{{ path('uno_main_deletedespacho', { id: form.id }) }}" class="btn btn-sm btn-danger btn-delete"onclick="return confirm('¿Estás seguro?')"><li class="glyphicon glyphicon-trash "></li>
+			                            {{ 'Eliminar'|trans }}
+			                        </a></div>
+	{% endblock %}

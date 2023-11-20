@@ -1,0 +1,157 @@
+
+uno_main_homepage:
+    path:     /uno/home
+    defaults: { _controller: UnoMainBundle:Default:home }
+    
+uno_main_usuarios:
+    path:     /uno/usuarios
+    defaults: { _controller: UnoMainBundle:Default:usuarios }    
+    
+uno_main_estadistica:
+    path:     /uno/estadistica
+    defaults: { _controller: UnoMainBundle:Default:estadistica }
+    
+uno_main_despa:
+    path:     /uno/despa/{index}
+    defaults: { _controller: UnoMainBundle:Default:despa }
+uno_main_orli:
+    path:     /uno/orli/{index}
+    defaults: { _controller: UnoMainBundle:Default:orli }
+    
+     
+uno_main_find:
+    path:     /uno/find
+    defaults: { _controller: UnoMainBundle:Default:find }
+    
+uno_main_homeall:
+    path:    /uno/homeall
+    defaults: { _controller: UnoMainBundle:Default:homeall}
+uno_main_despall:
+    path:     /uno/despall
+    defaults: { _controller: UnoMainBundle:Default:despall}        
+uno_main_login:
+    path:     /
+    defaults: { _controller: UnoMainBundle:Security:login }
+
+uno_main_login_check:
+    path:     /login_check
+    defaults: { _controller: UnoMainBundle:Security:loginCheck }
+uno_main_login_user:
+    path:     /uno/user
+    defaults: { _controller: UnoMainBundle:Security:user }
+
+uno_main_logout:
+    path:     /logout
+ 
+uno_main_editguardar:
+    path:      /uno/edit/{id}
+    defaults: { _controller: UnoMainBundle:Datos:editguardar} 
+    
+uno_main_order:
+    path:      /uno/order/{parametro}/{index}
+    defaults: { _controller: UnoMainBundle:Default:order} 
+    
+uno_main_orderd:
+    path:      /uno/orderd/{parametro}/{index}
+    defaults: { _controller: UnoMainBundle:Default:orderd}
+    
+uno_main_filtro:
+    path:      /uno/filtro/{muni}/{donde}
+    defaults: { _controller: UnoMainBundle:Default:filtro}   
+ 
+uno_main_tramiedit:
+    path:      /uno/tramiedit/{id}
+    defaults: { _controller: UnoMainBundle:Datos:tramiedit}
+uno_main_fuerzaedit:
+    path:      /uno/fuerzaedit/{id}
+    defaults: { _controller: UnoMainBundle:Datos:fuerzaedit}   
+    
+uno_main_despachoedit:
+    path:      /uno/despachoedit/{id}
+    defaults: { _controller: UnoMainBundle:Datos:despachoedit}    
+uno_main_vexp:
+    path:      /uno/vexp/{id}
+    defaults: { _controller: UnoMainBundle:Datos:vexpediente}  
+    
+uno_main_vdes:
+    path:      /uno/vdes
+    defaults: { _controller: UnoMainBundle:Datos:vdes}  
+    
+uno_main_vfuerza:
+    path:      /uno/vfuerza
+    defaults: { _controller: UnoMainBundle:Datos:vfuerza}   
+    
+uno_main_vtrami:
+    path:      /uno/vtrami
+    defaults: { _controller: UnoMainBundle:Datos:vtrami} 
+    
+uno_main_deleteu:
+    path:      /uno/deleteu/{id}
+    defaults: { _controller: UnoMainBundle:Datos:deleteu} 
+    
+uno_main_useredit:
+    path:      /uno/useredit/{id}
+    defaults: { _controller: UnoMainBundle:Security:useredit}   
+    
+uno_main_deletetrami:
+    path:      /uno/deletetrami/{id}
+    defaults: { _controller: UnoMainBundle:Datos:deletetrami}  
+
+uno_main_deletefuerza:
+    path:      /uno/deletefuerza/{id}
+    defaults: { _controller: UnoMainBundle:Datos:deletefuerza}       
+    
+uno_main_deletedespacho:
+    path:     /uno/deletedespacho/{id}
+    defaults: { _controller: UnoMainBundle:Datos:deletedespacho}      
+uno_main_delete:
+    path:      /uno/delete/{id}
+    defaults: { _controller: UnoMainBundle:Datos:delete}       
+uno_main_excel:
+    path:     /uno/excel
+    defaults: { _controller: UnoMainBundle:Default:excel } 
+    
+uno_main_concluidos:
+    path:     /uno/concluidos
+    defaults: { _controller: UnoMainBundle:Default:concluidos } 
+    
+uno_main_hojauno:
+    path:     /uno/hojauno
+    defaults: { _controller: UnoMainBundle:Default:hojauno }  
+    
+    
+uno_main_guardar:
+    path:     /uno/guardar
+    defaults: { _controller: UnoMainBundle:Datos:guardar}   
+    
+uno_main_trami:
+    path:     /uno/trami
+    defaults: { _controller: UnoMainBundle:Datos:trami }   
+    
+uno_main_getAll:
+    path:     /uno/getAll
+    defaults: { _controller: UnoMainBundle:Datos:getAll} 
+
+uno_main_tramicon:
+    path:     /uno/tramicon
+    defaults: { _controller: UnoMainBundle:Default:tramicon} 
+    
+uno_main_des:
+    path:     /uno/des
+    defaults: { _controller: UnoMainBundle:Datos:des} 
+   
+   
+uno_main_fuerza:
+    path:     /uno/fuerza
+    defaults: { _controller: UnoMainBundle:Datos:fuerza} 
+   
+uno_main_fuerzaadmin:
+    path:     /uno/fuerzaadmin/{municipio}
+    defaults: { _controller: UnoMainBundle:Datos:fuerzaadmin}    
+   
+uno_main_despaadmin:
+    path:     /uno/despaadmin/{municipio}
+    defaults: { _controller: UnoMainBundle:Datos:despaadmin}
+uno_main_tramiadmin:
+    path:     /uno/tramiadmin/{municipio}
+    defaults: { _controller: UnoMainBundle:Datos:tramiadmin}  

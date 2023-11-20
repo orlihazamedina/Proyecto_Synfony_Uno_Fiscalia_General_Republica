@@ -1,0 +1,119 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    
+    {{ parent() }}
+     {{ include('UnoMainBundle:User:messages/success.html.twig') }}
+	<div class="main container">
+		<div class="row well">
+			<div class="col-md-12">
+				<div class="page-header">
+					<h2>Fuerza</h2>
+                                        
+				</div>
+                            </div>
+                    
+      
+      <div class="col-md-5">
+      <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL FISCALES ESPECIALIDAD DE PENAL</div>
+                   <span> {{form.totalEspecialidad }}</span>
+              
+                </div>
+                   {%if form.dedControl %}
+      <div class="form-group">
+          <div class="form-label"style="color: black">DEDICADOS AL CONTROL</div>
+                    {{ form.dedControl }}
+                  
+                </div>
+                    {%endif%}
+                      {%if form.dedDespacho %}
+      <div class="form-group">
+          <div class="form-label"style="color: black">DEDICADOS AL DESPACHO</div>
+                    {{ form.dedDespacho }}
+                  
+                </div>
+      {%endif%}
+      
+       {%if form.dedJuicios%}
+      <div class="form-group">
+          <div class="form-label"style="color: black">DEDICADOS A JUICIOS</div>
+                    {{ form.dedJuicios }}
+                
+                </div>
+                    {%endif%}
+                    
+                    
+      {%if form.otrasActividades%}
+                <div class="form-group">
+          <div class="form-label"style="color: black">OTRAS ACTIVIDADES</div>
+                    {{ form.otrasActividades }}
+                 
+                </div>
+                      {%endif%}
+                      
+                
+                </div>
+           
+                <div class="col-md-5">
+                    {%if form.totaljuicios%}
+                       
+                <div class="form-group"style="color: black">
+          <div class="form-label">TOTAL DE JUICIOS REALIZADOS</div>
+                    {{ form.totaljuicios }}
+                   
+                </div>{%endif%}
+                    {%if form.sumario %}
+                   <div class="form-group">
+          <div class="form-label"style="color: black">JUICIOS REALIZADOS DEL PROCESO SUMARIO </div>
+                    {{ form.sumario }}
+               
+                </div>   {%endif%}
+                    
+                    {%if form.ordinario  %}
+                 <div class="form-group">
+          <div class="form-label"style="color: black">REALIZADOS EN EL TRIBUNAL MUNICIPAL ORDINARIO</div>
+                    {{form.ordinario }}
+                   
+                </div>   {%endif%}
+                
+                {%if form.tribProvOrd  %}
+                    <div class="form-group">
+          <div class="form-label"style="color: black">REALIZADOS EN EL TRIBUNAL PROVINCIAL ORDINARIO</div>
+                    
+              {{ form.tribProvOrd }}
+                </div>  
+                
+                {%endif%} {%if form.tribProvApel  %}
+                        <div class="form-group">
+          <div class="form-label"style="color: black">REALIZADOS TRIBUNAL PROVINCIAL DE APELACIONES</div>
+                    {{ form.tribProvApel }}
+            
+                </div>    {%endif%}{%if form.incidenciasReport   %}
+                 <div class="form-group">
+          <div class="form-label"style="color: black">TOTAL DE INCIDENCIAS REPORTADAS</div>
+                    {{ form.incidenciasReport }}
+                   
+                </div>   {%endif%}
+                    
+                </div>
+                
+                    </div>
+                
+                 {% if app.user.role == 'ROLE_USER' %}
+            <div class="form-group" id="muni" style="display: none">
+                {% else %}
+		<div class="form-group" id="muni" style="display: block">
+                    {% endif %}
+                    <div class="form-label"style="color: black"><h4>Municipio {{form.municipio}}</h4></div>
+       </div>
+      <div id="rinti">  <a href="{{ path('uno_main_fuerzaedit', { id: form.id }) }}" class="btn btn-sm btn-primary"><li class="glyphicon glyphicon-pencil"></li>
+			                            {{ 'Editar'|trans }}
+			                        </a>
+
+			                        <a href="{{ path('uno_main_deletefuerza', { id: form.id }) }}" class="btn btn-sm btn-danger btn-delete"onclick="return confirm('¿Estás seguro?')"><li class="glyphicon glyphicon-trash "></li>
+			                            {{ 'Eliminar'|trans }}
+			                        </a></div>
+      
+	
+	{% endblock %}

@@ -1,0 +1,8 @@
+.navbar, .no-border {
+	border-radius: 0 !important;
+	margin-bottom: 0 !important;
+}
+.alert {
+	border-radius: 0 !important;
+}
+
